@@ -1,0 +1,209 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Momo+Signature&family=Saira:ital,wght@0,100..900;1,100..900&family=Turret+Road:wght@200;300;400;500;700;800&display=swap');
+
+@font-face {
+    font-family: 'Android';
+    src: url(../fontes/idroid.otf) format('opentype');
+    font-weight: normal;
+}
+
+:root { /* variáveis CSS */
+--cor1: #2bf087;
+--cor2: #3adb85;
+--cor3: #13a858;
+--cor4: #207347;
+--cor5: #1a5c37;
+--cor6: #063d1e;
+
+--fonte-padrao: Arial, verdana, helvetica, sans-serif;
+--font-destaque: 'Bebas Neue', cursive;
+--font-android: 'Android', cursive;
+}
+
+* { /* seletor universal */
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #073042;
+    font-family: var(--font-padrao);
+}
+
+a.externo::after {
+    content: '\00A0\1F517'; /* código unicode do ícone */
+}
+
+header {
+    background-image: linear-gradient(to bottom, var(--cor3), var(--cor5));
+    min-height: 150px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+header > h1 {
+    color: white;
+    font-family: var(--font-destaque);
+    margin: auto;
+    font-size: 3em;
+    text-shadow: 2px 2px 0px #0000006a;
+
+}
+
+header > p  {
+    font-family: var(--fonte-padrao);
+    font-size: 1.2em;
+    color: white;
+    max-width: 600px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: auto;
+    text-shadow: 2px 2px 0px #0000006a;
+}
+
+nav {
+    background-color: var(--cor5);
+    padding: 10px;
+    box-shadow: 0px 7px 7px #0000006a;
+}
+
+nav a {
+    color: var(--cor1);
+    text-decoration: none;
+    padding: 10px;
+    font-weight: bold;
+    transition-duration: 0.5s; /* transição suave */
+}
+
+nav a:hover {
+    background-color: var(--cor3);
+    color: var(--cor6);
+    border-radius: 5px;
+}
+
+main {
+    background-color: white;
+    min-height: 280px;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px #0000006a;
+    border-radius: 10px;
+}
+
+main.2 {
+    background-color: white;
+    min-height: 280px;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px #0000006a;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+main p {
+    margin: 15px 0px;
+    text-align: justify;
+    text-indent: 30px; /* recuo na primeira linha */
+    line-height: 2em; /* espaçamento entre linhas */
+    font-size: 1em; /* tamanho da fonte */
+}
+
+main strong {
+    color: var(--cor5);
+    font-weight: bolder;
+}
+main a {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--cor6);
+    background-color: var(--cor1);
+    padding: 2px 5px;
+}
+
+main a:hover {
+    text-decoration: underline;
+    color: var(--cor5);
+}
+
+main h1 {
+    color: var(--cor6);
+    font-family: var(--font-android);
+
+}
+
+main h2 {
+    
+    font-family: var(--font-android);
+    color: var(--cor5);
+    font-size: 1.8em;
+    background-image: linear-gradient(to right, var(--cor1), transparent);
+    text-indent: 8px;
+}
+
+main img {
+    width: 100%;
+}
+main img.pequena {
+    max-width: 350px;
+    display: block; /* torna a imagem um bloco */
+    margin: auto;
+}
+
+div.video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #073042;
+    margin: 20px auto;
+    width: 100%;
+}
+
+div.video iframe {
+    max-width: 100%;
+   border-radius: 10px;
+}
+
+aside {
+    background-color: var(--cor2);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 7px #0000006a;
+}
+
+aside h3 {
+    background-color: var(--cor4);
+    color: white;
+    padding: 10px; /* espaço interno */
+    margin: -10px -10px 0px -10px; /* margem negativa para "puxar" o título para as bordas do aside */
+    border-radius: 10px 10px 0px 0px; /* bordas arredondadas apenas no topo */
+}
+
+aside ul {
+    list-style-position: inside; /* marcador dentro do texto */
+    columns: 2; /* divide em duas colunas */
+    margin-left: 20px;
+    list-style-type: '\2714\00A0\00A0'; /* \2714 marcador personalizado. \00A0 é o espaçamento do marcador. lembrando que esse tipo de marcador não é compatível com todos os navegadores */
+
+}
+
+footer { 
+    background-color: var(--cor5);
+    color: white;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 5px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: var(--cor1);
+}
