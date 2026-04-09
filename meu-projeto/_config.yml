@@ -1,0 +1,12 @@
+title: Meu Site Jekyll
+email: seuemail@exemplo.com
+description: Meu site criado com Jekyll
+
+exclude:
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+
+host: 127.0.0.1
+port: 4000
