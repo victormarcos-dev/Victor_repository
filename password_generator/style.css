@@ -1,0 +1,336 @@
+:root {
+    --bg-color: #000205; /* Azul escuro muito profundo */
+    --primary-color: #2b436b; /* Azul mais claro para elementos principais */
+    --secondary-color: #4a6fa5; /* Azul médio para botões e interativos */
+    --text-color: #e0e0e0; /* Cinza claro para texto */
+    --accent-color: #6bbcdb; /* Azul ciano para destaque/copiar */
+    --border-color: #3b5a80; /* Azul acinzentado para bordas */
+    --shadow-color: rgba(0, 0, 0, 0.4); /* Sombra escura */
+    --hover-color: #5d87bf; /* Azul um pouco mais claro para hover */
+
+    /* Força da senha */
+    --strength-weak: #e74c3c;   /* Vermelho */
+    --strength-medium: #f39c12; /* Laranja */
+    --strength-strong: #2ecc71; /* Verde */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden; /* Para garantir que as partículas de fundo fiquem no lugar */
+    position: relative; /* Para posicionar partículas de fundo */
+}
+
+/* Efeito de partículas de fundo (interativo) */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(43, 67, 107, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 90%, rgba(74, 111, 165, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(107, 188, 219, 0.1) 0%, transparent 50%);
+    animation: background-animate 20s infinite alternate;
+    z-index: -1; /* Fica atrás do conteúdo */
+}
+
+@keyframes background-animate {
+    0% { background-position: 0% 0%, 50% 50%, 100% 100%; }
+    100% { background-position: 100% 100%, 0% 0%, 50% 50%; }
+}
+
+
+.container {
+    background-color: var(--primary-color);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    position: relative;
+    z-index: 1; /* Garante que o conteúdo fique acima das partículas */
+}
+
+h1 {
+    color: var(--accent-color);
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.password-display-container {
+    display: flex;
+    margin-bottom: 25px;
+    position: relative; /* Para a mensagem de copiado */
+}
+
+#passwordDisplay {
+    flex-grow: 1;
+    padding: 15px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px 0 0 8px;
+    background-color: var(--bg-color);
+    color: var(--accent-color);
+    font-size: 1.1em;
+    font-weight: bold;
+    outline: none;
+    text-align: center;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+#passwordDisplay:focus {
+    border-color: var(--accent-color);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 5px var(--accent-color);
+}
+
+#copyPassword {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#copyPassword img {
+    width: 24px;
+    height: 24px;
+    filter: invert(1); /* Deixa o SVG branco */
+}
+
+#copyPassword:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px); /* Efeito sutil ao passar o mouse */
+}
+
+#copyPassword:active {
+    transform: translateY(0); /* Efeito de clique */
+    background-color: var(--primary-color);
+}
+
+.copy-message {
+    position: absolute;
+    top: -35px; /* Acima do input */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
+    white-space: nowrap; /* Impede que o texto quebre linha */
+}
+
+.copy-message.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.options {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.option-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.option-group:last-child {
+    margin-bottom: 0;
+}
+
+.option-group label {
+    font-size: 1.1em;
+    margin-right: 15px;
+    white-space: nowrap; /* Evita quebra de linha em telas pequenas */
+}
+
+input[type="range"] {
+    flex-grow: 1;
+    -webkit-appearance: none;
+    width: calc(100% - 120px); /* Ajusta a largura */
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 5px;
+    outline: none;
+    margin: 0 10px;
+    transition: background 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    cursor: grab;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: var(--hover-color);
+    transform: scale(1.1);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+    cursor: grabbing;
+}
+
+#lengthValue {
+    min-width: 30px; /* Garante que o número não dance */
+    text-align: right;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.checkbox-group {
+    justify-content: flex-start; /* Alinha checkboxes à esquerda */
+}
+
+.checkbox-group input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: '✔'; /* Ícone de check */
+    color: var(--bg-color);
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkbox-group label {
+    cursor: pointer;
+}
+
+#generatePassword {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#generatePassword:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+#generatePassword:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    background-color: var(--primary-color);
+}
+
+.password-strength {
+    margin-top: 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+#strengthIndicator {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block; /* Para que o padding e background funcionem */
+    min-width: 80px; /* Garante tamanho mínimo */
+    text-align: center;
+}
+
+/* Cores da força da senha */
+#strengthIndicator.weak {
+    background-color: var(--strength-weak);
+    color: white;
+}
+#strengthIndicator.medium {
+    background-color: var(--strength-medium);
+    color: white;
+}
+#strengthIndicator.strong {
+    background-color: var(--strength-strong);
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 25px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    .option-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .option-group label {
+        margin-bottom: 8px;
+    }
+    input[type="range"] {
+        width: 100%;
+        margin: 0;
+    }
+    #lengthValue {
+        width: 100%;
+        text-align: left;
+        margin-top: 5px;
+    }
+}
