@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Loja virtual exemplo para portfólio - Demonstração de habilidades em desenvolvimento web">
+    <meta name="theme-color" content="#0F2B2B">
+    <title>Loja Exemplo • Portfólio Dev</title>
+    
+    <!-- Pré-conexão para performance (boa prática sênior) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="v.ico" type="image/x-icon">    
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ============================================================ -->
+    <!-- BARRA SUPERIOR (ANÚNCIO / FRETE GRÁTIS)                      -->
+    <!-- ============================================================ -->
+    <div class="top-bar" role="complementary" aria-label="Promoção">
+        <div class="container">
+            <p class="top-bar__texto">🚚 Frete grátis para pedidos acima de <strong>R$ 199,00</strong> — Aproveite!</p>
+            <!-- Dados de contato fictícios -->
+            <span class="top-bar__contato">📞 (11) 1234-5678 | ✉️ contato@minhaloja.com</span>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- HEADER PRINCIPAL COM NAVEGAÇÃO                               -->
+    <!-- ============================================================ -->
+    <header class="header" id="header" data-header>
+        <div class="container header__container">
+            <!-- Logo da loja (nome fictício) -->
+            <a href="#" class="header__logo" aria-label="Minha Loja - Página inicial">
+                <span class="header__logo-texto">Minha<span class="header__logo-destaque">Loja</span></span>
+            </a>
+
+            <!-- Barra de busca -->
+            <form class="header__busca" role="search" data-busca-form>
+                <input 
+                    type="search" 
+                    class="header__busca-input" 
+                    placeholder="Buscar produtos..." 
+                    aria-label="Buscar produtos"
+                    data-busca-input
+                    autocomplete="off"
+                >
+                <button type="submit" class="header__busca-btn" aria-label="Pesquisar">🔍</button>
+            </form>
+
+            <!-- Ações do header: Wishlist, Login (fictício), Carrinho -->
+            <div class="header__acoes">
+                <!-- Lista de desejos -->
+                <button class="header__acao-btn" data-wishlist-toggle aria-label="Lista de desejos" title="Lista de desejos">
+                    <span class="header__acao-icone">♡</span>
+                    <span class="header__acao-badge" data-wishlist-contador>0</span>
+                </button>
+                
+                <!-- Login fictício -->
+                <button class="header__acao-btn" aria-label="Minha conta" title="Entrar">
+                    <span class="header__acao-icone">👤</span>
+                </button>
+
+                <!-- Carrinho -->
+                <button class="header__acao-btn header__acao-btn--carrinho" data-carrinho-toggle aria-label="Abrir carrinho" title="Carrinho">
+                    <span class="header__acao-icone">🛒</span>
+                    <span class="header__acao-badge" data-carrinho-contador>0</span>
+                </button>
+            </div>
+
+            <!-- Menu mobile hamburger -->
+            <button class="header__hamburger" data-hamburger aria-label="Menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <!-- Navegação principal -->
+        <nav class="navegacao" data-navegacao>
+            <div class="container">
+                <ul class="navegacao__lista">
+                    <li class="navegacao__item">
+                        <a href="#inicio" class="navegacao__link navegacao__link--ativo" data-nav-link="inicio">Início</a>
+                    </li>
+                    <li class="navegacao__item">
+                        <a href="#produtos" class="navegacao__link" data-nav-link="produtos">Produtos</a>
+                    </li>
+                    <li class="navegacao__item navegacao__item--dropdown" data-dropdown>
+                        <a href="#categorias" class="navegacao__link" data-nav-link="categorias">Categorias ▾</a>
+                        <!-- Submenu dropdown -->
+                        <ul class="navegacao__submenu" data-submenu>
+                            <li><a href="#" data-categoria="todos">Todos</a></li>
+                            <li><a href="#" data-categoria="eletronicos">Eletrônicos</a></li>
+                            <li><a href="#" data-categoria="roupas">Roupas</a></li>
+                            <li><a href="#" data-categoria="acessorios">Acessórios</a></li>
+                        </ul>
+                    </li>
+                    <li class="navegacao__item">
+                        <a href="#sobre" class="navegacao__link" data-nav-link="sobre">Sobre</a>
+                    </li>
+                    <li class="navegacao__item">
+                        <a href="#contato" class="navegacao__link" data-nav-link="contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- CONTEÚDO PRINCIPAL                                           -->
+    <!-- ============================================================ -->
+    <main class="main-content" data-main-content>
+        
+        <!-- ======================================================== -->
+        <!-- SEÇÃO: INÍCIO / HERO BANNER COM CARROSSEL                -->
+        <!-- ======================================================== -->
+        <section id="inicio" class="hero" data-secao="inicio">
+            <div class="hero__carrossel" data-carrossel>
+                <!-- Slide 1 -->
+                <div class="hero__slide hero__slide--ativo" data-carrossel-slide>
+                    <div class="hero__slide-conteudo container">
+                        <span class="hero__badge">Nova Coleção</span>
+                        <h2 class="hero__titulo">Descubra o estilo <em>Petróleo</em></h2>
+                        <p class="hero__descricao">Peças exclusivas com tons profundos e sofisticados para quem busca elegância atemporal.</p>
+                        <a href="#produtos" class="btn btn--primario btn--grande" data-cta-explorar>Explorar Coleção</a>
+                    </div>
+                    <!-- Placeholder de imagem de fundo -->
+                    <div class="hero__imagem">LUGAR DA IMAGEM — Banner Principal</div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="hero__slide" data-carrossel-slide>
+                    <div class="hero__slide-conteudo container">
+                        <span class="hero__badge">Promoção</span>
+                        <h2 class="hero__titulo">Até <em>30% OFF</em> em acessórios</h2>
+                        <p class="hero__descricao">Aproveite as ofertas especiais desta temporada com frete grátis.</p>
+                        <a href="#produtos" class="btn btn--primario btn--grande" data-cta-explorar>Ver Ofertas</a>
+                    </div>
+                    <div class="hero__imagem">LUGAR DA IMAGEM — Banner Promocional</div>
+                </div>
+                <!-- Controles -->
+                <button class="hero__seta hero__seta--anterior" data-carrossel-anterior aria-label="Slide anterior">‹</button>
+                <button class="hero__seta hero__seta--proxima" data-carrossel-proxima aria-label="Próximo slide">›</button>
+                <div class="hero__indicadores" data-carrossel-indicadores></div>
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- SEÇÃO: PRODUTOS                                           -->
+        <!-- ======================================================== -->
+        <section id="produtos" class="produtos" data-secao="produtos">
+            <div class="container">
+                <!-- Cabeçalho da seção com filtros -->
+                <header class="produtos__header">
+                    <div>
+                        <h2 class="produtos__titulo">Catálogo de Produtos</h2>
+                        <p class="produtos__subtitulo">Explore nossa seleção curada</p>
+                    </div>
+                    <!-- Filtros e ordenação -->
+                    <div class="produtos__controles">
+                        <!-- Dropdown de ordenação -->
+                        <div class="select-custom" data-select>
+                            <button class="select-custom__trigger" data-select-trigger>
+                                <span data-select-texto>Ordenar: Relevância</span>
+                                <span class="select-custom__seta">▾</span>
+                            </button>
+                            <ul class="select-custom__opcoes" data-select-opcoes>
+                                <li data-valor="relevancia" class="select-custom__opcao--selecionada">Relevância</li>
+                                <li data-valor="preco-asc">Menor Preço</li>
+                                <li data-valor="preco-desc">Maior Preço</li>
+                                <li data-valor="nome-asc">Nome A-Z</li>
+                            </ul>
+                        </div>
+                        <!-- Botão de visualização em grade/lista -->
+                        <div class="vizualizacao-toggle">
+                            <button class="vizualizacao-toggle__btn vizualizacao-toggle__btn--ativo" data-view="grade" title="Visualização em grade">⊞</button>
+                            <button class="vizualizacao-toggle__btn" data-view="lista" title="Visualização em lista">☰</button>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Tags de categoria ativas (filtro horizontal) -->
+                <div class="categorias-filtro" data-categorias-filtro>
+                    <button class="categorias-filtro__btn categorias-filtro__btn--ativo" data-filtro-categoria="todos">Todos</button>
+                    <button class="categorias-filtro__btn" data-filtro-categoria="eletronicos">Eletrônicos</button>
+                    <button class="categorias-filtro__btn" data-filtro-categoria="roupas">Roupas</button>
+                    <button class="categorias-filtro__btn" data-filtro-categoria="acessorios">Acessórios</button>
+                </div>
+
+                <!-- Container que receberá os cards de produtos via JS -->
+                <div class="produtos__grade" data-grade-produtos></div>
+
+                <!-- Paginação -->
+                <nav class="paginacao" data-paginacao aria-label="Paginação de produtos">
+                    <button class="paginacao__btn paginacao__btn--anterior" data-pagina-anterior disabled>← Anterior</button>
+                    <div class="paginacao__numeros" data-pagina-numeros></div>
+                    <button class="paginacao__btn paginacao__btn--proxima" data-pagina-proxima>Próxima →</button>
+                </nav>
+
+                <!-- Estado vazio (quando busca não encontra nada) -->
+                <div class="produtos__vazio" data-produtos-vazio style="display:none;">
+                    <p class="produtos__vazio-icone">🔍</p>
+                    <h3>Nenhum produto encontrado</h3>
+                    <p>Tente ajustar sua busca ou limpar os filtros.</p>
+                    <button class="btn btn--secundario" data-limpar-busca>Limpar busca</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- SEÇÃO: SOBRE                                              -->
+        <!-- ======================================================== -->
+        <section id="sobre" class="sobre" data-secao="sobre">
+            <div class="container">
+                <div class="sobre__grid">
+                    <div class="sobre__imagem">LUGAR DA IMAGEM — Sobre a loja</div>
+                    <div class="sobre__texto">
+                        <span class="sobre__badge">Nossa História</span>
+                        <h2 class="sobre__titulo">Paixão pelo design com propósito</h2>
+                        <p>Somos uma loja fictícia criada para demonstrar capacidades técnicas em desenvolvimento web. Cada detalhe deste projeto foi pensado para simular um e-commerce real e profissional.</p>
+                        <p>Utilizamos as melhores práticas do mercado: código semântico, performance otimizada, design responsivo e uma experiência de usuário fluida.</p>
+                        <!-- Dados fictícios de fundação, etc. -->
+                        <div class="sobre__stats">
+                            <div class="sobre__stat"><strong>2018</strong><span>Fundação</span></div>
+                            <div class="sobre__stat"><strong>+10k</strong><span>Clientes</span></div>
+                            <div class="sobre__stat"><strong>500+</strong><span>Produtos</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- SEÇÃO: CONTATO                                            -->
+        <!-- ======================================================== -->
+        <section id="contato" class="contato" data-secao="contato">
+            <div class="container">
+                <h2 class="contato__titulo">Fale Conosco</h2>
+                <div class="contato__grid">
+                    <!-- Informações fictícias de contato -->
+                    <div class="contato__info">
+                        <div class="contato__info-item">
+                            <span class="contato__info-icone">📍</span>
+                            <div>
+                                <strong>Endereço</strong>
+                                <p>Rua Exemplo, 123 — São Paulo/SP<br>CEP: 01234-567</p>
+                            </div>
+                        </div>
+                        <div class="contato__info-item">
+                            <span class="contato__info-icone">📞</span>
+                            <div>
+                                <strong>Telefone</strong>
+                                <p>(11) 1234-5678</p>
+                            </div>
+                        </div>
+                        <div class="contato__info-item">
+                            <span class="contato__info-icone">✉️</span>
+                            <div>
+                                <strong>E-mail</strong>
+                                <p>contato@minhaloja.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Formulário de contato (não envia dados reais) -->
+                    <form class="contato__form" data-form-contato>
+                        <div class="contato__campo">
+                            <label for="contato-nome">Nome</label>
+                            <input type="text" id="contato-nome" placeholder="Seu nome completo" required>
+                        </div>
+                        <div class="contato__campo">
+                            <label for="contato-email">E-mail</label>
+                            <input type="email" id="contato-email" placeholder="seu@email.com" required>
+                        </div>
+                        <div class="contato__campo">
+                            <label for="contato-mensagem">Mensagem</label>
+                            <textarea id="contato-mensagem" rows="4" placeholder="Escreva sua mensagem..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primario">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER                                                       -->
+    <!-- ============================================================ -->
+    <footer class="footer">
+        <div class="container footer__grid">
+            <div class="footer__col">
+                <h4 class="footer__logo">Minha<span class="header__logo-destaque">Loja</span></h4>
+                <p>Loja fictícia para demonstração de portfólio. Nenhum dado real é processado.</p>
+            </div>
+            <div class="footer__col">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Newsletter</h4>
+                <p>Receba novidades (simulação)</p>
+                <form class="footer__newsletter" data-newsletter-form>
+                    <input type="email" placeholder="seu@email.com" required>
+                    <button type="submit" class="btn btn--primario">Assinar</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer__copy container">
+            <p>© 2026 MinhaLoja — Projeto de Portfólio. Todos os direitos reservados (fictício).</p>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- CARRINHO LATERAL (OFF-CANVAS)                                -->
+    <!-- ============================================================ -->
+    <div class="overlay" data-overlay></div>
+    <aside class="carrinho" data-carrinho>
+        <div class="carrinho__header">
+            <h3 class="carrinho__titulo">🛒 Seu Carrinho</h3>
+            <button class="carrinho__fechar" data-carrinho-fechar aria-label="Fechar carrinho">✕</button>
+        </div>
+
+        <!-- Cupom de desconto -->
+        <div class="carrinho__cupom" data-cupom>
+            <input type="text" class="carrinho__cupom-input" placeholder="Cupom de desconto" data-cupom-input>
+            <button class="btn btn--pequeno btn--secundario" data-cupom-aplicar>Aplicar</button>
+        </div>
+        
+        <div class="carrinho__itens" data-carrinho-itens>
+            <!-- Renderizado dinamicamente -->
+        </div>
+
+        <div class="carrinho__rodape">
+            <div class="carrinho__resumo">
+                <div class="carrinho__linha">
+                    <span>Subtotal</span>
+                    <span data-carrinho-subtotal>R$ 0,00</span>
+                </div>
+                <div class="carrinho__linha carrinho__linha--desconto" style="display:none" data-linha-desconto>
+                    <span>Desconto</span>
+                    <span data-carrinho-desconto>-R$ 0,00</span>
+                </div>
+                <div class="carrinho__linha carrinho__linha--total">
+                    <strong>Total</strong>
+                    <strong data-carrinho-total>R$ 0,00</strong>
+                </div>
+            </div>
+            <button class="btn btn--primario btn--full" data-btn-checkout>Finalizar Compra</button>
+            <button class="btn btn--texto" data-btn-limpar-carrinho>Limpar Carrinho</button>
+        </div>
+    </aside>
+
+    <!-- ============================================================ -->
+    <!-- MODAL: VISUALIZAÇÃO RÁPIDA DO PRODUTO                        -->
+    <!-- ============================================================ -->
+    <div class="modal" data-modal-produto>
+        <div class="modal__container">
+            <button class="modal__fechar" data-modal-fechar>✕</button>
+            <div class="modal__grid" data-modal-conteudo>
+                <!-- Preenchido via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MODAL: CHECKOUT / FINALIZAR COMPRA                           -->
+    <!-- ============================================================ -->
+    <div class="modal" data-modal-checkout>
+        <div class="modal__container modal__container--checkout">
+            <button class="modal__fechar" data-checkout-fechar>✕</button>
+            <h3 class="modal__titulo">Finalizar Pedido</h3>
+            
+            <!-- Etapas do checkout visual -->
+            <div class="checkout-etapas" data-checkout-etapas>
+                <span class="checkout-etapas__item checkout-etapas__item--ativo" data-etapa="1">1. Dados</span>
+                <span class="checkout-etapas__item" data-etapa="2">2. Pagamento</span>
+                <span class="checkout-etapas__item" data-etapa="3">3. Confirmação</span>
+            </div>
+            
+            <form class="form-checkout" data-form-checkout>
+                <!-- Etapa 1: Dados pessoais -->
+                <fieldset class="form-checkout__etapa form-checkout__etapa--ativa" data-etapa-form="1">
+                    <legend>Dados de Entrega</legend>
+                    <div class="form-checkout__campo">
+                        <label for="checkout-nome">Nome Completo</label>
+                        <input type="text" id="checkout-nome" placeholder="Seu nome completo" required>
+                    </div>
+                    <div class="form-checkout__campo">
+                        <label for="checkout-email">E-mail</label>
+                        <input type="email" id="checkout-email" placeholder="seu@email.com" required>
+                    </div>
+                    <div class="form-checkout__campo">
+                        <label for="checkout-endereco">Endereço</label>
+                        <input type="text" id="checkout-endereco" placeholder="Rua, número, cidade, CEP" required>
+                    </div>
+                    <button type="button" class="btn btn--primario" data-proxima-etapa="2">Continuar</button>
+                </fieldset>
+
+                <!-- Etapa 2: Pagamento (simulado) -->
+                <fieldset class="form-checkout__etapa" data-etapa-form="2">
+                    <legend>Dados do Cartão</legend>
+                    <p class="form-checkout__aviso">🔒 Simulação — Nenhum dado real é processado.</p>
+                    <div class="form-checkout__campo">
+                        <label for="checkout-cartao">Número do Cartão</label>
+                        <input type="text" id="checkout-cartao" placeholder="0000 0000 0000 0000" maxlength="19" data-mask-cartao>
+                    </div>
+                    <div class="form-checkout__linha">
+                        <div class="form-checkout__campo">
+                            <label for="checkout-validade">Validade</label>
+                            <input type="text" id="checkout-validade" placeholder="MM/AA" maxlength="5" data-mask-validade>
+                        </div>
+                        <div class="form-checkout__campo">
+                            <label for="checkout-cvv">CVV</label>
+                            <input type="text" id="checkout-cvv" placeholder="123" maxlength="4">
+                        </div>
+                    </div>
+                    <p class="form-checkout__total">Total: <strong data-checkout-total>R$ 0,00</strong></p>
+                    <!-- Dados bancários do lojista não são necessários (simulação) -->
+                    <button type="submit" class="btn btn--primario">Confirmar Pagamento</button>
+                </fieldset>
+            </form>
+
+            <!-- Etapa 3: Sucesso (oculta até finalizar) -->
+            <div class="checkout-sucesso" data-checkout-sucesso style="display:none;">
+                <span class="checkout-sucesso__icone">✅</span>
+                <h3>Pedido Realizado!</h3>
+                <p>Seu pedido foi processado com sucesso (simulação).<br>Você receberá atualizações por e-mail.</p>
+                <button class="btn btn--primario" data-nova-compra>Voltar à Loja</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MODAL: LISTA DE DESEJOS                                      -->
+    <!-- ============================================================ -->
+    <div class="modal" data-modal-wishlist>
+        <div class="modal__container">
+            <button class="modal__fechar" data-wishlist-fechar>✕</button>
+            <h3 class="modal__titulo">♡ Lista de Desejos</h3>
+            <div class="wishlist__itens" data-wishlist-itens>
+                <p style="text-align:center; color:var(--cor-texto-suave);">Sua lista de desejos está vazia.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TOAST DE NOTIFICAÇÃO                                         -->
+    <!-- ============================================================ -->
+    <div class="toast-container" data-toast-container></div>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
+    <script src="script.js"></script>
+</body>
+</html>
